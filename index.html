@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cornhole Score Keeper</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" >
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <main class="container">
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <div class="card mt-5">                  
+                    <div class="card-image">
+                        <figure class="image is-16by9">
+                            <img src="https://images.unsplash.com/photo-1602632003094-0494b73b7c4a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29ybmhvbGV8ZW58MHx8MHx8fDA%3D" alt="">
+                        </figure>
+                    </div>
+                    <box class="box mb-0">
+                        <h4 class="title is-6">Corn Hole Score Keeper</h4>                    
+                    </box>
+                    <div class="card-content">
+                        <h1 class="title is-1"><span id="p1Score">0</span> to <span id="p2Score">0</span></h1>
+                        <p class="mb-3">Use the buttons below to keep score.</p>
+                        <form action="#" id="scoreKeeper">
+                            <div class="columns is-vcentered">
+                                <div class="column is-one-quarter is-normal is-expanded">
+                                    <label class="label" for="maxScore">Playing to</label>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <div class="control">
+                                            <div class="select is-rounded">    
+                                                <select name="maxScore" id="maxScore">
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="11">11</option>
+                                                    <option value="15">15</option>
+                                                    <option value="21" selected>21</option>                                    
+                                                </select>
+                                            </div>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <footer class="card-footer">
+                        <button class="link has-text-weight-extrabold card-footer-item" id="p1Up">+1 Player One</button>
+                        <button class="link has-text-weight-extrabold card-footer-item" id="p2Up">+1 Player Two</button>
+                        <button class="link has-text-weight-extrabold card-footer-item" id="reset">Reset</button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+
+
+
+
+
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
