@@ -15,7 +15,7 @@ for (let button of buttons) {
         e.preventDefault();
         
         // Can't change the score after the game has started.
-        if (maxScore.disabled === false) {
+        if (!maxScore.disabled) {
             maxScore.disabled = true;
         }
 
@@ -103,24 +103,3 @@ function resetGame() {
 }
 
 
-
-
-
-
-
-// THIS WASN'T THE CORRECT IDEA HERE.......
-// Replaced the toggler for 2 functions setGameOver() and enableButtons()
-
-// Button Toggler
-//  
-// function toggleButtons() {
-//     for (let button of buttons) {
-//         if (button.id !== 'reset') {
-//             if (button.disabled && !isGameOver) {
-//                 button.disabled = false;
-//             } else {
-//                 button.disabled = true;
-//             }
-//         }
-//     }
-// }
