@@ -1,23 +1,22 @@
-// Need to refactor with an object to represent players.
-// This will allow for cleaner code with simpler functions,
-// and less duplication of code.
-
+// Player Objects
 const p1 = {
+    name: "Player 1",
     score: 0,
     display: document.querySelector('#p1Score'),
 }
 
 const p2 = {
+    name: "Player 2",
     score: 0,
     display: document.querySelector('#p2Score'),
 }
 
-const buttons = document.querySelectorAll('button');
+// Game Conditions
 const maxScore = document.querySelector('#maxScore');
-
-// Game Condition
 let isGameOver = false;
 
+// Our Buttons
+const buttons = document.querySelectorAll('button');
 for (let button of buttons) {
     button.addEventListener('click', function (e){
         e.preventDefault();
@@ -29,11 +28,9 @@ for (let button of buttons) {
 
         // Scoring Buttons
         if (button.id === 'p1Up') {
-            p1.score++;
-            p1.display.innerText = p1.score;          
+            updateScore(p1, p2);         
         } else if (button.id === 'p2Up') {
-            p2.score++;
-            p2.display.innerText = p2.score;
+            updateScore(p2, p1);
 
         // Reset Button     
         } else if (button.id === 'reset') {
@@ -44,39 +41,28 @@ for (let button of buttons) {
             console.error(">.< Something went terribly wrong >.< ");
         }
 
-        if (button.id !== 'reset') {
-            checkWin();
-        }
     });
 }
-
 maxScore.addEventListener('change', resetGame)
 
-// A function to see if we have any winners. [This could be refactored.]
-// [FUTURE DIRECTION] checkWin() to be made into updateScore()
-// This will accept 2 parmeters, player and opponent. 
-function checkWin () {
+// A function to update the score and see if we have any winners.
+function updateScore(player, opponent) {
+    player.score++;
+    player.display.innerText = player.score;
+    
     const max = parseInt(maxScore.value)
-    if (p1.score >= max) {
-        p1.display.classList.add('has-text-success');
-        p2.display.classList.add('has-text-danger');
-        console.log('P1 Wins!');
+    if (player.score >= max) {
+        player.display.classList.add('has-text-success');
+        opponent.display.classList.add('has-text-danger');
+        console.log(`${player.name} Wins!`);
         setGameOver();
-
-    } else if (p2.score >= max) {
-        p1.display.classList.add('has-text-danger');
-        p2.display.classList.add('has-text-success');
-        console.log('P2 Wins!');
-        setGameOver();
-    } else {
-        console.log('No Winner.');
-    }
+    }           
 }
 
 // Set the game over 
 function setGameOver() {
     for (let button of buttons) {
-        if (button.id !== 'reset' && button.disabled === false) {
+        if (button.id !== 'reset' && !button.disabled) {
             button.disabled = true;
         }
     }
@@ -111,5 +97,4 @@ function resetGame() {
         isGameOver = false;
     }
 }
-
 
