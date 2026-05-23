@@ -2,14 +2,22 @@
 // This will allow for cleaner code with simpler functions,
 // and less duplication of code.
 
+const p1 = {
+    score: 0,
+    display: document.querySelector('#p1Score'),
+}
+
+const p2 = {
+    score: 0,
+    display: document.querySelector('#p2Score'),
+}
+
 const buttons = document.querySelectorAll('button');
-const p1score = document.querySelector('#p1Score');
-const p2score = document.querySelector('#p2Score');
 const maxScore = document.querySelector('#maxScore');
 
 // Score holders
-let score1 = 0;
-let score2 = 0;
+// let score1 = 0;
+// let score2 = 0;
 
 // Game Condition
 let isGameOver = false;
@@ -25,11 +33,11 @@ for (let button of buttons) {
 
         // Scoring Buttons
         if (button.id === 'p1Up') {
-            score1++;
-            p1score.innerText = score1;          
+            p1.score++;
+            p1.display.innerText = p1.score;          
         } else if (button.id === 'p2Up') {
-            score2++;
-            p2score.innerText = score2;
+            p2.score++;
+            p2.display.innerText = p2.score;
 
         // Reset Button     
         } else if (button.id === 'reset') {
@@ -51,15 +59,15 @@ maxScore.addEventListener('change', resetGame)
 // A function to see if we have any winners. [This could be refactored.]
 function checkWin () {
     const max = parseInt(maxScore.value)
-    if (score1 >= max) {
-        p1score.classList.add('winner');
-        p2score.classList.add('loser');
+    if (p1.score >= max) {
+        p1.display.classList.add('winner');
+        p2.display.classList.add('loser');
         console.log('P1 Wins!');
         setGameOver();
 
-    } else if (score2 >= max) {
-        p1score.classList.add('loser');
-        p2score.classList.add('winner');
+    } else if (p2.score >= max) {
+        p1.display.classList.add('loser');
+        p2.display.classList.add('winner');
         console.log('P2 Wins!');
         setGameOver();
     } else {
@@ -91,12 +99,12 @@ function enableButtons() {
 // Reset the Game
 function resetGame() {
     console.log('Reset');
-    score1 = 0;
-    score2 = 0;
-    p1score.innerText = score1;
-    p1score.classList.remove('winner', 'loser');
-    p2score.innerText = score2;
-    p2score.classList.remove('winner', 'loser');
+    p1.score = 0;
+    p2.score = 0;
+    p1.display.innerText = p1.score;
+    p1.display.classList.remove('winner', 'loser');
+    p2.display.innerText = p2.score;
+    p2.display.classList.remove('winner', 'loser');
     enableButtons();
     if (maxScore.disabled) {
         maxScore.disabled = false;
