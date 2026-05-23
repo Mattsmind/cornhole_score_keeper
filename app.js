@@ -1,12 +1,12 @@
 // Player Objects
 const p1 = {
-    name: "Player 1",
+    name: "Team 1",
     score: 0,
     display: document.querySelector('#p1Score'),
 }
 
 const p2 = {
-    name: "Player 2",
+    name: "Team 2",
     score: 0,
     display: document.querySelector('#p2Score'),
 }
@@ -82,13 +82,11 @@ function enableButtons() {
 
 // Reset the Game
 function resetGame() {
-    console.log('Reset');
-    p1.score = 0;
-    p2.score = 0;
-    p1.display.innerText = p1.score;
-    p1.display.classList.remove('has-text-danger', 'has-text-success');
-    p2.display.innerText = p2.score;
-    p2.display.classList.remove('has-text-danger', 'has-text-success');
+    for (let p of [p1, p2]) {
+        p.score = 0;
+        p.display.innerText = p.score;
+        p.display.classList.remove('has-text-danger', 'has-text-success');
+    }
     enableButtons();
     if (maxScore.disabled) {
         maxScore.disabled = false;

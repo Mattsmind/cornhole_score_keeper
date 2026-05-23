@@ -4,10 +4,10 @@
 
 
 #p1Up {
-    border-radius: 0 0 0 15px;
+    border-radius: 0 0 0 0.5em;
     &:hover {
         background-color: blue;
-        border-radius: 0 0 0 15px;
+        border-radius: 0 0 0 0.5em;
     }
     &:hover:disabled {
         background-color: rgb(99,99,99);
@@ -32,10 +32,10 @@
 }
 
 #reset {
-    border-radius: 0 0 15px 0;
+    border-radius: 0 0 0.5em 0;
     &:hover {
         background-color: red;
-        border-radius: 0 0 15px 0;
+        border-radius: 0 0 0.5em 0;
     }
 }
 
