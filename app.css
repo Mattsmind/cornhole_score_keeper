@@ -1,10 +1,7 @@
-.winner {
-    color: green;
-}
+/* This CSS, along with the bulma .link class
+ * is used to make my buttons look a little cleaner.
+ */
 
-.loser {
-    color: red;
-}
 
 #p1Up {
     border-radius: 0 0 0 15px;
@@ -15,12 +12,22 @@
     &:hover:disabled {
         background-color: rgb(99,99,99);
     }
+    &:disabled {
+        color: rgb(70,70,70);
+        background-color: rgb(45,45,45);
+    }
 }
 
-#p2Up:hover {
-    background-color: green;
+#p2Up {
+    &:hover {
+        background-color: green;
+    }
     &:hover:disabled {
         background-color: rgb(99,99,99);
+    }
+    &:disabled {
+        color: rgb(70,70,70);
+        background-color: rgb(45,45,45);
     }
 }
 
@@ -32,6 +39,7 @@
     }
 }
 
+/* Just manipulating Bulma's .box to make hard edges */
 .box {
     border-radius: 0;
 }

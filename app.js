@@ -15,10 +15,6 @@ const p2 = {
 const buttons = document.querySelectorAll('button');
 const maxScore = document.querySelector('#maxScore');
 
-// Score holders
-// let score1 = 0;
-// let score2 = 0;
-
 // Game Condition
 let isGameOver = false;
 
@@ -57,17 +53,19 @@ for (let button of buttons) {
 maxScore.addEventListener('change', resetGame)
 
 // A function to see if we have any winners. [This could be refactored.]
+// [FUTURE DIRECTION] checkWin() to be made into updateScore()
+// This will accept 2 parmeters, player and opponent. 
 function checkWin () {
     const max = parseInt(maxScore.value)
     if (p1.score >= max) {
-        p1.display.classList.add('winner');
-        p2.display.classList.add('loser');
+        p1.display.classList.add('has-text-success');
+        p2.display.classList.add('has-text-danger');
         console.log('P1 Wins!');
         setGameOver();
 
     } else if (p2.score >= max) {
-        p1.display.classList.add('loser');
-        p2.display.classList.add('winner');
+        p1.display.classList.add('has-text-danger');
+        p2.display.classList.add('has-text-success');
         console.log('P2 Wins!');
         setGameOver();
     } else {
@@ -102,9 +100,9 @@ function resetGame() {
     p1.score = 0;
     p2.score = 0;
     p1.display.innerText = p1.score;
-    p1.display.classList.remove('winner', 'loser');
+    p1.display.classList.remove('has-text-danger', 'has-text-success');
     p2.display.innerText = p2.score;
-    p2.display.classList.remove('winner', 'loser');
+    p2.display.classList.remove('has-text-danger', 'has-text-success');
     enableButtons();
     if (maxScore.disabled) {
         maxScore.disabled = false;
