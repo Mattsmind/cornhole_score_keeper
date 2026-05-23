@@ -1,3 +1,7 @@
+// Need to refactor with an object to represent players.
+// This will allow for cleaner code with simpler functions,
+// and less duplication of code.
+
 const buttons = document.querySelectorAll('button');
 const p1score = document.querySelector('#p1Score');
 const p2score = document.querySelector('#p2Score');
